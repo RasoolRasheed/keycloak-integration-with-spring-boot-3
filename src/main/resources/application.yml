@@ -1,15 +1,34 @@
 spring:
+  #Vault Config
+  config:
+    import: vault://
+  cloud:
+    vault:
+      port: 8200
+      host: localhost
+      scheme: http
+      token: rasool
+      authentication: TOKEN
+      kv:
+        application-name: test-key
+        enabled: true
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/Alibou
+          issuer-uri: http://localhost:8080/realms/${realms}
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
 server:
   port: 8081
 
-jwt:
-  auth:
-    converter:
-      resource-id: alibou-rest-api
-      principle-attribute: preferred_username
+#jwt:
+#  auth:
+#    converter:
+#      resource-id: test
+#      principle-attribute: username
+
+
+
+
+

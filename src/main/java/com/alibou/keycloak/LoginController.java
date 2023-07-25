@@ -1,17 +1,21 @@
 package com.alibou.keycloak;
 
-import org.springframework.security.access.prepost.PreAuthorize;
+import com.alibou.keycloak.dto.UserDTO;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/demo")
-public class DemoController {
+@RequestMapping("/api/v1/login")
+public class LoginController {
 
     @GetMapping
 //    @PreAuthorize("hasRole('client_user')")
-    public String hello() {
+    public String login(@RequestBody UserDTO userDTO) {
+
+
+
         return "Hello from Spring boot & Keycloak";
     }
 
